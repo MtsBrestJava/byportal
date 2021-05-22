@@ -24,7 +24,7 @@ public class Employee {
     private Integer age;
     private String phoneNumber;
     private byte availibility;
-
+//хуй 3.14да Джигурда
 
     public Employee() {
         System.out.println();

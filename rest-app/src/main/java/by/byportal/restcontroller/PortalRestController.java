@@ -32,12 +32,23 @@ public class PortalRestController {
     public List<Employee> getEmployees() {
         List<Employee> employees = employeeRepository.findAll();
         // TODO: Доделать эмплоёв и тут в соответствии с классом
-/*        employees.add(new Employee("Островский", "Руслан", 37, "Developer"));
-        employees.add(new Employee("Левченко", "Александр", 36, "Junior"));
-        employees.add(new Employee("Рагозинский", "Алексей", 35, "Junior"));
-        employees.add(new Employee("Якимчик", "Александр", 34, "Junior"));
-        employees.add(new Employee("Савицкий", "Владимир", 38, "Junior"));*/
+        employees.add(new Employee("Островский", "Руслан", new Date(75, 4, 20)));
+        employees.add(new Employee("Левченко", "Александр", new Date(82, 3, 30)));
+        employees.add(new Employee("Рагозинский", "Алексей", new Date(79, 12, 03)));
+        employees.add(new Employee("Якимчик", "Александр", new Date(80, 7, 1)));
+        employees.add(new Employee("Савицкий", "Владимир", new Date(83, 11, 10)));
         return employees;
+    }
+    @GetMapping("/employeesall")
+    public List<Employee> getEmployeesall() {
+        List<Employee> employeesall = employeeRepository.findAll();
+        // TODO: Доделать эмплоёв и тут в соответствии с классом
+        employeesall.add(new Employee(1, "Островский", "Руслан", "Николаевич",  new Date(75, 4, 20), "Developer", "Машерова 22", 45, "727-07-18",1));
+        employeesall.add(new Employee("Левченко", "Александр", new Date(82, 3, 30)));
+        employeesall.add(new Employee("Рагозинский", "Алексей", new Date(79, 12, 03)));
+        employeesall.add(new Employee("Якимчик", "Александр", new Date(80, 7, 1)));
+        employeesall.add(new Employee("Савицкий", "Владимир", new Date(83, 11, 10)));
+        return employeesall;
     }
 // тест push.....
 }

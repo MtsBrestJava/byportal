@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DZpage</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div th:each="el : ${pagelistweb}" >
+    <tr style="height: 40px;">
+        <td style="width: 25%; height: 18px;"; th:text="${el.portalId}"></td>
+        <td style="width: 25%; height: 18px;"; th:text="${el.firstName}"></td>
+        <td style="width: 25%; height: 18px;"; th:text="${el.lastName}"></td>
+        <td style="width: 25%; height: 18px;"; th:text="${el.middleName}"></td>
+        <td style="width: 25%; height: 18px;"; th:text="${el.birthDate}"></td>
+        <td style="width: 25%; height: 18px;"; th:text="${el.jobPosition}"></td>
+        <td style="width: 25%; height: 18px;"; th:text="${el.workingAddress}"></td>
+        <td style="width: 25%; height: 18px;"; th:text="${el.phoneNumbers}"></td>
+        <td style="width: 25%; height: 18px;"; th:text="${el.availibility}"></td>
+</div>
+</div>
+<div class="container mt-5 mb-5">
+    <h1>Добавление сотрудника</h1>
+    <form action="/web/post" method="post">
+        <input type="number" name="id" placeholder="Введите ID" class="form-control"><br>
+        <input type="text" name="firstName" placeholder="Введите имя" class="form-control"><br>
+        <input type="text" name="lastName" placeholder="Введите фамилию" class="form-control"><br>
+        <input type="text" name="middleName" placeholder="Введите отчество" class="form-control"><br>
+        <input type="date" name="birthDate" placeholder="Введите дату рождения" class="form-control"><br>
+        <input type="text" name="jobPosition" placeholder="Введите должность" class="form-control"><br>
+        <input type="text" name="workingAddress" placeholder="Введите рабочий адрес" class="form-control"><br>
+        <input type="number" name="age" placeholder="Введите возраст" class="form-control"><br>
+        <input type="text" name="phoneNumbers" placeholder="Введите номер телефона" class="form-control"><br>
+        <input type="number" name="availibilit" placeholder="Введите активность" class="form-control"><br>
+        <button type="submit" class="btn btn-success">Добавить </button>
+    </form>
+</div>
+</div>
+<div class="container mt-5 mb-5">
+    <h1>Изменение данных сотрудника</h1>
+    <form action="/web/put/{id}" method="post">
+        <input type="number" name="id" placeholder="Введите ID" class="form-control"><br>
+        <input type="text" name="firstName" placeholder="Введите имя" class="form-control"><br>
+        <input type="text" name="lastName" placeholder="Введите фамилию" class="form-control"><br>
+        <input type="text" name="middleName" placeholder="Введите отчество" class="form-control"><br>
+        <input type="date" name="birthDate" placeholder="Введите дату рождения" class="form-control"><br>
+        <input type="text" name="jobPosition" placeholder="Введите должность" class="form-control"><br>
+        <input type="text" name="workingAddress" placeholder="Введите рабочий адрес" class="form-control"><br>
+        <input type="number" name="age" placeholder="Введите возраст" class="form-control"><br>
+        <input type="text" name="phoneNumbers" placeholder="Введите номер телефона" class="form-control"><br>
+        <input type="number" name="availibilit" placeholder="Введите активность" class="form-control"><br>
+        <button type="submit" class="btn btn-success">Изменить </button>
+    </form>
+</div>
+<div class="container mt-5 mb-5">
+    <h1>Удаление сотрудника</h1>
+    <form action="/web/del/{id}" method="post">
+        <input type="number" name="id" placeholder="Введите ID" class="form-control"><br>
+               <button type="submit" class="btn btn-success">Удалить </button>
+    </form>
+</div>
+</body>
+</html>

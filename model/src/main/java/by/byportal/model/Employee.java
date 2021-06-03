@@ -1,10 +1,12 @@
 package by.byportal.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,7 +20,8 @@ public class Employee {
     private String firstName;
     private String lastName;
     private String middleName;
-    private Date birthDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private LocalDate birthDate;
     private String jobPosition;
     private String workingAddress;
     private Integer age;
@@ -30,13 +33,13 @@ public class Employee {
         System.out.println();
     }
 
-    public Employee(String firstName, String lastName, Date birthDate) {
+    public Employee(String firstName, String lastName, LocalDate birthDate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
     }
 
-    public Employee(int portalId, String firstName, String lastName, String middleName, Date birthDate, String jobPosition, String workingAddress, Integer age, String phoneNumber, byte availibility) {
+    public Employee(int portalId, String firstName, String lastName, String middleName, LocalDate birthDate, String jobPosition, String workingAddress, Integer age, String phoneNumber, byte availibility) {
         this.portalId = portalId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -89,11 +92,11 @@ public class Employee {
         this.middleName = middleName;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -169,12 +172,12 @@ public class Employee {
 }
 
 /*
-public Date(int year, int month, int date) {
+public LocalDate(int year, int month, int date) {
         this(year, month, date, 0, 0, 0);
     }
 
     /**
-     * Allocates a {@code Date} object and initializes it so that
+     * Allocates a {@code LocalDate} object and initializes it so that
      * it represents the instant at the start of the minute specified by
      * the {@code year}, {@code month}, {@code date},
      * {@code hrs}, and {@code min} arguments, in the local

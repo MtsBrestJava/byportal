@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -24,12 +25,13 @@ public class PortalRestController {
     @GetMapping("/employee")
     public Employee getEmployee() {
         //Employee employee1 = new Employee("Сергей", "Иванюклвич", 35, "TeamLid");
-        Employee exampleEmployee = new Employee("Иванюкович", "Сергей", new Date(82, 5, 22));
+        Employee exampleEmployee = new Employee("Иванюкович", "Сергей", LocalDate.of(1985,5,25));
         //Employee testEmployee = employeeRepository.????
         return exampleEmployee; //employee1;
     }
     @GetMapping("/employees")
     public List<Employee> getEmployees() {
+        System.out.println("getEmployees() rest-controller");
         List<Employee> employees = employeeRepository.findAll();
         // TODO: Доделать эмплоёв и тут в соответствии с классом
 /*        employees.add(new Employee("Островский", "Руслан", 37, "Developer"));
@@ -39,5 +41,6 @@ public class PortalRestController {
         employees.add(new Employee("Савицкий", "Владимир", 38, "Junior"));*/
         return employees;
     }
+//ORN
 
 }

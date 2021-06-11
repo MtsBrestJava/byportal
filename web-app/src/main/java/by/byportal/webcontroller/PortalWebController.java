@@ -1,13 +1,11 @@
 package by.byportal.webcontroller;
 
 import by.byportal.model.Employee;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 @Controller
@@ -48,6 +46,35 @@ public class PortalWebController {
         restTemplate.put(ROOT_URL + "emploees/{id}", putEmploee, Employee.class);
         return "redirect:/web/get";
     }
+
+    // my PUT
+
+    @PutMapping(value = "/{personId:\\d+}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateProfile(
+            @Valid @RequestBody ProfileRequest request,
+            @PathVariable int personId
+    ) {
+        Employee.updateProfile(
+                request.getFirstName(),
+                request.getLastName(),
+                request.getAge(),
+                portalId
+        );
+    }
+
+    /*@PutMapping("/employees/{id}")
+    public ResponseEntity<Employee> updateEmployee(@PathVariable(value = "id") Long employeeId,
+      @Valid @RequestBody Employee employeeDetails) throws Exception {
+        Employee employee = EmployeeRepository.findById(employeeId)
+        .orElseThrow(() -> new Exception("Employee not found for this id :: " + employeeId));
+        employee.setPortalId(employeeDetails.getPortalId());
+        employee.setLastName(employeeDetails.getLastName());
+        employee.setFirstName(employeeDetails.getFirstName());
+        final Employee updatedEmployee = Employee.save(employee);
+        return ResponseEntity.ok(updatedEmployee);
+    }*/
+
     @PostMapping("/web/del/{id}")
     public String delEmploeeOne (@PathVariable(value = "id") long id, Model model){
         restTemplate = new RestTemplate();

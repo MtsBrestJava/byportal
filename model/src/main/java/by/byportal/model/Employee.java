@@ -140,6 +140,15 @@ public class Employee {
         this.availibility = availibility;
     }
 
+    // for PUT
+    public void findById() {
+        System.out.println("portalId =" + portalId);
+    }
+
+    public void save (){
+        
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -10,6 +10,11 @@ import org.springframework.stereotype.Repository;
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     // TODO: ?
 
-    //тратата
+        //PUT
+        void updateEmployee(String firstName, String lastName, int age, int id);
+
+
+
+
 
 }

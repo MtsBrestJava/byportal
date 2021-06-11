@@ -43,4 +43,14 @@ public class PortalRestController {
     }
 //ORN
 
+    // PUT
+    @Override
+    public void updateProfile(String firstName, String secondName, int age, int id) {
+        Employee employee = Employee.getEmployeeId(id)
+                .orElseThrow(() -> new Exception(String.valueOf(id)));
+        EmployeeRepository.updateEmployee(firstName, secondName, age, employee.getId());
+    }
+
+
+
 }

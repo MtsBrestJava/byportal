@@ -1,6 +1,7 @@
 package by.byportal.webcontroller;
 
 import by.byportal.model.Employee;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,11 +47,38 @@ public class PortalWebController {
         return "redirect:/web/get";
     }
 
-    @DeleteMapping("/web/{id}")
+    // my PUT
+
+    @PutMapping(value = "/{personId:\\d+}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateProfile(
+            @Valid @RequestBody ProfileRequest request,
+            @PathVariable int personId
+    ) {
+        Employee.updateProfile(
+                request.getFirstName(),
+                request.getLastName(),
+                request.getAge(),
+                portalId
+        );
+    }
+
+    /*@PutMapping("/employees/{id}")
+    public ResponseEntity<Employee> updateEmployee(@PathVariable(value = "id") Long employeeId,
+      @Valid @RequestBody Employee employeeDetails) throws Exception {
+        Employee employee = EmployeeRepository.findById(employeeId)
+        .orElseThrow(() -> new Exception("Employee not found for this id :: " + employeeId));
+        employee.setPortalId(employeeDetails.getPortalId());
+        employee.setLastName(employeeDetails.getLastName());
+        employee.setFirstName(employeeDetails.getFirstName());
+        final Employee updatedEmployee = Employee.save(employee);
+        return ResponseEntity.ok(updatedEmployee);
+    }*/
+
+    @PostMapping("/web/del/{id}")
     public String delEmploeeOne (@PathVariable(value = "id") long id, Model model){
         restTemplate = new RestTemplate();
         restTemplate.delete(ROOT_URL + "emploees/{id}", Employee.class);
-        // TO REST: DELETE -> http://localhost:8090/emploees/55
         return "redirect:/web/get";
     }
 }

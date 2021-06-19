@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -47,6 +44,18 @@ public class PortalRestController {
         employees.add(new Employee("Якимчик", "Александр", 34, "Junior"));
         employees.add(new Employee("Савицкий", "Владимир", 38, "Junior"));*/
         return employees;
+    }
+
+    // PUT
+    @PutMapping(value = "/emploees/{personId:\\d+}")
+    public ResponseEntity<?>  save (@PathVariable Long personId) throws Exception {
+        Optional<Employee> employee = employeeRepository.findById(personId);
+        if(employee.isPresent()) {
+         EmployeeRepository.save();
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        }
     }
 
     // DELETE -> http://localhost:8090/emploees/55

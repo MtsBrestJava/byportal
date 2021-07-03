@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bye</title>
+    <link rel="stylesheet"
+          href="../static/css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+<h1 th:inline="text">Bye [[${#httpServletRequest.remoteUser}]]!}</h1>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out">
+</form>
+</body>
+</html>

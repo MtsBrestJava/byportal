@@ -48,6 +48,29 @@ public class PortalRestController {
         return employees;
     }
 
+    // PUT
+    @PutMapping(value = "/update/{id}")
+    public ResponseEntity<?>  update( @PathVariable ("id") long id, @RequestBody Employee updateEmployee) throws Exception {
+        Optional<Employee> employee = employeeRepository.findById(id);
+        if(employee.isPresent()) {
+         employeeRepository.save(updateEmployee);
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        }
+    }
+
+    // POST
+    @PostMapping(value = "/post")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<?> save(@RequestBody Employee saveEmployee) {
+        Employee saveEmployee = null;
+
+
+        return saveEmployee;
+
+    }
+
     // DELETE -> http://localhost:8090/emploees/55
     @DeleteMapping(value = "/emploees/{personId:\\d+}")
     public ResponseEntity<?> deleteProfile(@PathVariable Long personId) throws Exception {

@@ -47,15 +47,26 @@ public class PortalRestController {
     }
 
     // PUT
-    @PutMapping(value = "/emploees/{personId:\\d+}")
-    public ResponseEntity<?>  save (@PathVariable Long personId) throws Exception {
-        Optional<Employee> employee = employeeRepository.findById(personId);
+    @PutMapping(value = "/update/{id}")
+    public ResponseEntity<?>  update( @PathVariable ("id") long id, @RequestBody Employee updateEmployee) throws Exception {
+        Optional<Employee> employee = employeeRepository.findById(id);
         if(employee.isPresent()) {
-         EmployeeRepository.save();
+         employeeRepository.save(updateEmployee);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
+    }
+
+    // POST
+    @PostMapping(value = "/post")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<?> save(@RequestBody Employee saveEmployee) {
+        Employee saveEmployee = null;
+
+
+        return saveEmployee;
+
     }
 
     // DELETE -> http://localhost:8090/emploees/55

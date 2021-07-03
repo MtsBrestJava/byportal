@@ -74,5 +74,7 @@ public class PortalRestController {
     }
 
     // TODO: СаняЯ: Сделать POST (как PUT почти)
-
+@DeleteMapping(value = "/{personId:\\d+}")
+public void deleteProfile(@PathVariable int personId) {
+    profileService.deleteProfile(personId);
 }

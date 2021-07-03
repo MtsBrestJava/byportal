@@ -13,4 +13,11 @@ public class EmployeeService {
 
         return allEmployees;
     }
+    @Override
+    public void deleteProfile(int id) {
+        Profile profile = profileDao.getProfileById(id)
+                .orElseThrow(() -> new ProfileNotFoundException(id));
+        profileDao.deleteProfileById(profile.getId());
+
+
 }

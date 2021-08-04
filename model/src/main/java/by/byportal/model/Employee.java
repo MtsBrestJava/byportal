@@ -18,7 +18,7 @@ public class Employee {
     private String lastName;
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDate birthDate;
-    private int portalId = 0;
+    //private int portalId = 0;
     //private String middleName;
     //private String jobPosition;
     //private String workingAddress;

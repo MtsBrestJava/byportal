@@ -15,69 +15,85 @@
 
 <div th:each="el : ${pagelistweb}" >
     <tr style="height: 40px;">
-        <td style="width: 25%; height: 18px;"; th:text="${el.portalId}">234324</td>
+        <td style="width: 25%; height: 18px;"; th:text="${el.employeeId}">234324</td>
         <td style="width: 25%; height: 18px;"; th:text="${el.firstName}">234324</td>
         <td style="width: 25%; height: 18px;"; th:text="${el.lastName}">234324</td>
-        <td style="width: 25%; height: 18px;"; th:text="${el.middleName}"></td>
+<!--        <td style="width: 25%; height: 18px;"; th:text="${el.middleName}"></td>-->
         <td style="width: 25%; height: 18px;"; th:text="${el.birthDate}"></td>
-        <td style="width: 25%; height: 18px;"; th:text="${el.jobPosition}"></td>
+ <!--       <td style="width: 25%; height: 18px;"; th:text="${el.jobPosition}"></td>
         <td style="width: 25%; height: 18px;"; th:text="${el.workingAddress}"></td>
         <td style="width: 25%; height: 18px;"; th:text="${el.phoneNumber}"></td>
-        <td style="width: 25%; height: 18px;"; th:text="${el.availibility}"></td>
+        <td style="width: 25%; height: 18px;"; th:text="${el.availibility}"></td>-->
 </div>
 
 <div class="container mt-5 mb-5">
     <h1>Добавление сотрудника</h1>
     <form th:object="${newemployee}" action="/web/post" method="post">
-        <input type="number" th:field="*{portalId}" value="5" placeholder="Введите ID" class="form-control">portalId<br>
+        <input type="number" th:field="*{employeeId}" value="5" placeholder="Введите ID" class="form-control">portalId<br>
         <input type="text" th:field="*{firstName}" value="Serega" placeholder="Введите имя" class="form-control">firstName<br>
         <input type="text" th:field="*{lastName}" value="Iv" placeholder="Введите фамилию" class="form-control">lastName<br>
-        <input type="text" th:field="*{middleName}" value="Otch" placeholder="Введите отчество" class="form-control"><br>
+       <!-- <input type="text" th:field="*{middleName}" value="Otch" placeholder="Введите отчество" class="form-control"><br>-->
         <input type="datetime-local" th:field="*{birthDate}" placeholder="Введите дату рождения" class="form-control"><br>
-        <input type="text" th:field="*{jobPosition}" value="Sis" placeholder="Введите должность" class="form-control"><br>
+      <!--  <input type="text" th:field="*{jobPosition}" value="Sis" placeholder="Введите должность" class="form-control"><br>
         <input type="text" th:field="*{workingAddress}" value="Brest" placeholder="Введите рабочий адрес" class="form-control"><br>
         <input type="number" th:field="*{age}" value="55" placeholder="Введите возраст" class="form-control"><br>
         <input type="text" th:field="*{phoneNumber}" value="375 29 777777" placeholder="Введите номер телефона" class="form-control"><br>
-        <input type="number" th:field="*{availibility}" value="99" placeholder="Введите активность" class="form-control"><br>
+        <input type="number" th:field="*{availibility}" value="99" placeholder="Введите активность" class="form-control"><br>-->
         <button type="submit" class="btn btn-success">Добавить </button>
     </form>
 </div>
 <!--<div class="container mt-5 mb-5">
-    <h1>Добавление сотрудника</h1>
-    <form action="/web/post" method="post">
-        <input type="number" name="portalId" value="5" placeholder="Введите ID" class="form-control"><br>
-        <input type="text" name="firstName" value="Serega" placeholder="Введите имя" class="form-control"><br>
-        <input type="text" name="lastName" value="Iv" placeholder="Введите фамилию" class="form-control"><br>
-        <input type="text" name="middleName" value="Otch" placeholder="Введите отчество" class="form-control"><br>
-        <input type="date" name="birthDate" placeholder="Введите дату рождения" class="form-control"><br>
-        <input type="text" name="jobPosition" value="Sis" placeholder="Введите должность" class="form-control"><br>
-        <input type="text" name="workingAddress" value="Brest" placeholder="Введите рабочий адрес" class="form-control"><br>
-        <input type="number" name="age" value="55" placeholder="Введите возраст" class="form-control"><br>
-        <input type="text" name="phoneNumber" value="375 29 777777" placeholder="Введите номер телефона" class="form-control"><br>
-        <input type="number" name="availibility"  value="99" placeholder="Введите активность" class="form-control"><br>
-        <button type="submit" class="btn btn-success">Добавить </button>
-    </form>
+   <h1>Добавление сотрудника</h1>
+   <form action="/web/post" method="post">
+       <input type="number" name="portalId" value="5" placeholder="Введите ID" class="form-control"><br>
+       <input type="text" name="firstName" value="Serega" placeholder="Введите имя" class="form-control"><br>
+       <input type="text" name="lastName" value="Iv" placeholder="Введите фамилию" class="form-control"><br>
+       <input type="text" name="middleName" value="Otch" placeholder="Введите отчество" class="form-control"><br>
+       <input type="date" name="birthDate" placeholder="Введите дату рождения" class="form-control"><br>
+       <input type="text" name="jobPosition" value="Sis" placeholder="Введите должность" class="form-control"><br>
+       <input type="text" name="workingAddress" value="Brest" placeholder="Введите рабочий адрес" class="form-control"><br>
+       <input type="number" name="age" value="55" placeholder="Введите возраст" class="form-control"><br>
+       <input type="text" name="phoneNumber" value="375 29 777777" placeholder="Введите номер телефона" class="form-control"><br>
+       <input type="number" name="availibility"  value="99" placeholder="Введите активность" class="form-control"><br>
+       <button type="submit" class="btn btn-success">Добавить </button>
+   </form>
 </div>-->
 <div class="container mt-5 mb-5">
     <h1>Изменение данных сотрудника</h1>
     <form th:object="${putemployee}" action="/web/put" method="post">
-        <input type="number" th:field="*{portalId}" placeholder="Введите ID" class="form-control">portalId<br>
+        <input type="number" th:field="*{employeeId}" placeholder="Введите ID" class="form-control">portalId<br>
         <input type="text" th:field="*{firstName}"  placeholder="Введите имя" class="form-control">firstName<br>
         <input type="text" th:field="*{lastName}"  placeholder="Введите фамилию" class="form-control">lastName<br>
-        <input type="text" th:field="*{middleName}"  placeholder="Введите отчество" class="form-control"><br>
+     <!--   <input type="text" th:field="*{middleName}"  placeholder="Введите отчество" class="form-control"><br>-->
         <input type="datetime-local" th:field="*{birthDate}" placeholder="Введите дату рождения" class="form-control"><br>
-        <input type="text" th:field="*{jobPosition}"  placeholder="Введите должность" class="form-control"><br>
+        <!--<input type="text" th:field="*{jobPosition}"  placeholder="Введите должность" class="form-control"><br>
         <input type="text" th:field="*{workingAddress}"  placeholder="Введите рабочий адрес" class="form-control"><br>
         <input type="number" th:field="*{age}"  placeholder="Введите возраст" class="form-control"><br>
         <input type="text" th:field="*{phoneNumber}"  placeholder="Введите номер телефона" class="form-control"><br>
-        <input type="number" th:field="*{availibility}" placeholder="Введите активность" class="form-control"><br>
+        <input type="number" th:field="*{availibility}" placeholder="Введите активность" class="form-control"><br>-->
     </form>
 </div>
 <div class="container mt-5 mb-5">
     <h1>Удаление сотрудника</h1>
     <form action="/web/{id}" method="post">
         <input type="number" name="id" placeholder="Введите ID" class="form-control"><br>
-               <button type="submit" class="btn btn-success">Удалить </button>
+        <button type="submit" class="btn btn-success">Удалить </button>
+    </form>
+</div>
+<p> </p>Сохранить файл <a th:href="@{/save}">"в формате</a> Excel </p>
+
+<div th:each="el : ${readlist}" >
+    <tr style="height: 40px;">
+        <td style="width: 25%; height: 18px;"; th:text="${el}">234324</td>
+       </div>
+<div class="container mt-5 mb-5">
+    <h1>Чтение Excel</h1>
+    <form action="/read" method="get">
+        <div th:each="el : ${readlist}" >
+            <tr style="height: 40px;">
+                <td style="width: 25%; height: 18px;"; th:text="${el}">234324</td>
+        </div>
+        <button type="submit" class="btn btn-success">Прочитать </button>
     </form>
 </div>
 </body>

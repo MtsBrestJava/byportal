@@ -40,10 +40,8 @@ public class EmployeeTest {
         Assert.isTrue(
                 testEmployee.getFirstName() == name
                         && testEmployee.getLastName() == last
-                && testEmployee.getBirthDate() == insertedDate
+                        && testEmployee.getBirthDate() == insertedDate
                 ,"Employee Employee(String, String, LocalDate) constructor is not properly working"
         );
     }
-
-
 }

@@ -1,11 +1,15 @@
 package by.byportal.webcontroller;
 
 import by.byportal.model.Employee;
+import by.byportal.webcontroller.filessaweready.ReadFileExcel;
+import by.byportal.webcontroller.filessaweready.SaveFileExcel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
 
 @Controller
 public class PortalWebController {
@@ -55,5 +59,19 @@ public class PortalWebController {
         restTemplate.delete(ROOT_URL + "employees/{id}", Employee.class);
         // TO REST: DELETE -> http://localhost:8090/emploees/55
         return "redirect:/web/get";
+    }
+    @GetMapping("/save")
+    public String saveMyFile (Model model) {
+        restTemplate=new RestTemplate();
+        ResponseEntity<Employee[]> person = restTemplate.getForEntity(ROOT_URL+"employees", Employee[].class);
+        Employee[] pageList = person.getBody();
+        SaveFileExcel.saveFile(pageList);
+    return "HomePage";
+    }
+    @GetMapping("/read")
+    public String readMyFile(Model model){
+        List readlist = ReadFileExcel.readFile();
+        model.addAttribute("readlist", readlist);
+        return "HomePage";
     }
 }
